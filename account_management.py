@@ -51,7 +51,8 @@ pprint(game_stamps)
 
 
 def get_score(game_stamps, offset):
-    scores = game_stamps[-1]["score"]
+    scores = {"home": 0, "away": 0}
     for stamp in game_stamps[offset:]:
-        scores += stamp["score"]
-        return scores
+        scores["home"] += stamp["score"]["home"]
+        scores["away"] += stamp["score"]["away"]
+    return scores
